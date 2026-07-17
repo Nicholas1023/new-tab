@@ -8,8 +8,7 @@ let month = date.getMonth() + 1;
 
 fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${year}-${month}-${day}`).then(response => response.json()).then(data => {
     document.body.background=data.url;
-    console.log(data)
-    document.getElementById("imageCopyright").textContent=`Attribution: Background image from NASA APOD API. Image is © ${data.copyright}`;
+    document.getElementById("imageCopyright").textContent=`Attribution: Background image from NASA APOD API. Image copyright: ${data.copyright}`;
 });
 
 let searchEngine = document.getElementById("searchURL");
