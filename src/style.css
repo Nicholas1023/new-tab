@@ -37,3 +37,14 @@ select, button {
   justify-content: center;
   align-items: center;
 }
+
+footer {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
