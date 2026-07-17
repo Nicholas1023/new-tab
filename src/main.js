@@ -19,6 +19,10 @@ searchEngine.addEventListener("change", function(e) {
     document.getElementById("searchBar").placeholder = `Search anything on ${e.target.options[e.target.selectedIndex].text}...`
 });
 
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+})
+
 function time() {
     let displayDate = new Date();
     month = displayDate.getMonth() + 1;

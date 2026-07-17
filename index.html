@@ -8,8 +8,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="search-ui">
-            <input type="text" placeholder="Search anything..." id="searchBar">
+        <form class="search-ui" id="searchForm">
+            <input type="text" placeholder="Search anything..." id="searchBar" autocomplete="off">
             <button type="submit" style="background-color: rgba(0,0,0,0);" onclick="window.location.href=`https://${document.getElementById('searchURL').value}?q=${document.getElementById('searchBar').value}`">
                 <i class="fa-solid fa-xl fa-magnifying-glass"></i>
             </button>
@@ -19,7 +19,7 @@
                 <option value="duckduckgo.com">DuckDuckGo</option>
                 <option value="github.com/search">GitHub</option>
             </select>
-        </div>
+        </form>
         <p id="time"></p>
         <footer>
             <small id="imageCopyright">Attribution: Background image from NASA APOD API.</small>
