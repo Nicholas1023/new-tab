@@ -1,6 +1,6 @@
 * {
   padding: 0;
-  margin: 5px;
+  margin: 0;
   font-family: "Lexend", system-ui, sans-serif;
   color: white;
 }
@@ -16,6 +16,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+body * {
+  margin: 5px;
 }
 
 input {
