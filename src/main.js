@@ -5,6 +5,14 @@ date.setDate(date.getDate() - 1);
 let day = date.getDate();
 let year = date.getFullYear();
 let month = date.getMonth() + 1;
+let currentPin = JSON.parse(localStorage.getItem("pinned")) || [];
+currentPin.forEach(URLtoPin => {
+    let pinNew = document.createElement("a");
+    pinNew.innerHTML = `<img src="${URLtoPin}/favicon.ico">`;
+    pinNew.href = URLtoPin;
+    pinNew.className = "pinned-item";
+    document.getElementById("pinned").appendChild(pinNew);
+});
 
 fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${year}-${month}-${day}`).then(response => response.json()).then(data => {
     document.body.background=data.hdurl;
@@ -22,7 +30,23 @@ searchEngine.addEventListener("change", function(e) {
 
 document.getElementById("searchForm").addEventListener("submit", function(e) {
     e.preventDefault();
+});
+
+document.getElementById("pinnedForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 })
+
+document.getElementById("add").addEventListener("click", function() {
+    if (document.getElementById("pinnedURL").value != "") {
+        let pinNew = document.createElement("a");
+        pinNew.innerHTML = `<img src="${document.getElementById("pinnedURL").value}/favicon.ico">`;
+        pinNew.href = document.getElementById("pinnedURL").value;
+        pinNew.className = "pinned-item";
+        document.getElementById("pinned").appendChild(pinNew);
+        currentPin.push(document.getElementById("pinnedURL").value);
+        localStorage.setItem("pinned", JSON.stringify(currentPin));
+    }
+});
 
 function time() {
     let displayDate = new Date();
@@ -53,7 +77,7 @@ function time() {
     } else if (month == 9) {
         monthName = "December";
     }
-    document.getElementById("time").innerHTML = `Time now: ${displayDate.getDate()} ${monthName} ${displayDate.getFullYear()}, ${displayDate.toLocaleTimeString()}`;
+    document.getElementById("time").innerHTML = `${displayDate.getDate()} ${monthName} ${displayDate.getFullYear()}, ${displayDate.toLocaleTimeString()}`;
 };
 
 setInterval(time, 500);

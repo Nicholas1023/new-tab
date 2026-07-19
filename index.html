@@ -22,8 +22,20 @@
         </form>
         <p id="time"></p>
         <footer>
-            <small id="imageCopyright">Attribution: Background image from NASA APOD API.</small>
-            <small>New tab page by Nicholas Lim.</small>
+            <form class="search-ui" id="pinnedForm">
+                <input type="text" id="pinnedURL" placeholder="Enter URL (including https://)" class="create-pinned-URL">
+                <button type="submit" id="add" style="background-color: rgba(0,0,0,0.4); color: white;">
+                    <i class="fa-solid fa-xl fa-plus"></i>
+                    <p>Create Pinned URL</p>
+                </button>
+            </form>
+            <div class="pinned" id="pinned">
+                <p>Pinned URLs:</p>
+            </div>
+            <div class="footer-content">
+                <small id="imageCopyright">Attribution: Background image from NASA APOD API.</small>
+                <small>New tab page by Nicholas Lim.</small>
+            </div>
         </footer>
         <script type="module" src="src/main.js"></script>
         <script src="https://kit.fontawesome.com/c13c173d03.js" crossorigin="anonymous"></script>
