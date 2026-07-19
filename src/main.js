@@ -22,10 +22,14 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${year}-${mon
 });
 
 let searchEngine = document.getElementById("searchURL");
-document.getElementById("searchBar").placeholder = `Search anything on ${searchEngine.options[searchEngine.selectedIndex].text}...`
+if (localStorage.getItem("searchEngine")) {
+    searchEngine.value = localStorage.getItem("searchEngine");
+};
+document.getElementById("searchBar").placeholder = `Search anything on ${searchEngine.options[searchEngine.selectedIndex].text}...`;
 
 searchEngine.addEventListener("change", function(e) {
-    document.getElementById("searchBar").placeholder = `Search anything on ${e.target.options[e.target.selectedIndex].text}...`
+    document.getElementById("searchBar").placeholder = `Search anything on ${e.target.options[e.target.selectedIndex].text}...`;
+    localStorage.setItem("searchEngine", e.target.value);
 });
 
 document.getElementById("searchForm").addEventListener("submit", function(e) {
